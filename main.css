@@ -1,3 +1,4 @@
+/* Общие стили для всех страниц */
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +9,7 @@ body {
     min-height: 100vh;
 }
 
+/* Шапка сайта (header) - для всех страниц */
 .header {
     display: flex;
     align-items: center;
@@ -16,6 +18,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Стили логотипа в шапке */
 .logo {
     display: flex;
     align-items: center;
@@ -33,6 +36,7 @@ body {
     font-weight: bold;
 }
 
+/* Навигационное меню в шапке */
 .nav {
     margin-left: 2rem;
     display: flex;
@@ -65,6 +69,7 @@ body {
     background-color: #6366f1;
 }
 
+/* Hero секция - используется на главной (index.html) и странице ресурсов (resources.html) */
 .hero-section {
     position: relative;
     width: 100%;
@@ -79,6 +84,11 @@ body {
     align-items: center;
     text-align: center;
     color: white;
+}
+
+/* Специальный фон для hero-секции на странице ресурсов */
+.resources-hero {
+    background-image: url('img/resources.png');
 }
 
 .hero-section::before {
@@ -108,6 +118,25 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+/* Кнопка "Начать" в hero секции на странице resources.html */
+.get-started {
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    color: white;
+    background-color: #6366f1;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 2;
+}
+
+.get-started:hover {
+    background-color: #4f46e5;
+}
+
+/* Секция поиска - используется на главной странице (index.html) */
 .search-section {
     padding: 3rem 0;
     background-color: #f8f9fa;
@@ -185,4 +214,115 @@ body {
 
 .search-button:hover {
     background-color: #4f46e5;
+}
+
+/* Секция руководств - используется на странице ресурсов (resources.html) */
+.guides-section {
+    padding: 5rem 2rem;
+    background-color: #fff;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 3rem;
+}
+
+/* Контейнер с карточками руководств */
+.guides-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+/* Стили карточек руководств */
+.guide-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+}
+
+.guide-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.guide-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.guide-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Кнопка "Читать далее" в карточках */
+.read-more {
+    display: block;
+    padding: 0 1.5rem 1.5rem;
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.read-more:hover {
+    color: #4f46e5;
+}
+
+/* Секция с советами - используется на странице ресурсов (resources.html) */
+.tips-section {
+    padding: 5rem 2rem;
+    background-color: #fff;
+}
+
+.tips-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.tip-item:hover {
+    transform: translateY(-5px);
+}
+
+.tip-item i {
+    font-size: 1.5rem;
+    color: #6366f1;
+    margin-top: 0.25rem;
+}
+
+.tip-item p {
+    margin: 0;
+    color: #4a5568;
+    line-height: 1.5;
+    font-size: 1.1rem;
 } 
