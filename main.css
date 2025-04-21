@@ -481,14 +481,16 @@ body {
     background-color: #6366f1;
 }
 
-/* Секция всех маршрутов */
+/* Стили для секции всех маршрутов */
 .all-routes-section {
-    padding: 5rem 2rem;
+    padding: 3rem 2rem 5rem 2rem;
     background-color: #f8f9fa;
 }
 
 .all-routes-section .routes-container {
     margin-top: 2rem;
+    padding-bottom: 2rem; /* Отступ снизу перед кнопкой */
+    justify-content: start; /* Выравниваем карточки по левому краю */
 }
 
 .all-routes-section .route-card {
@@ -533,5 +535,86 @@ body {
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+/* Стили для секции фильтрации маршрутов (routes.html) */
+.route-filter-section {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.filter-bar {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.filter-search {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.filter-dropdown {
+    padding: 0.75rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.filter-tags {
+    display: flex;
+    gap: 1rem;
+    justify-content: center; /* Центрируем теги */
+}
+
+.filter-tag {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #e9ecef;
+    color: #495057;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.filter-tag:hover {
+    background-color: #dee2e6;
+}
+
+.filter-tag.active {
+    background-color: #6366f1;
+    color: white;
+}
+
+/* Добавим кнопку "Загрузить еще трассы" */
+.load-more-routes {
+    display: block;
+    margin: 2rem auto;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    color: white;
+    background-color: #343a40; /* Темно-серый цвет как на скрине */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.load-more-routes:hover {
+    background-color: #495057;
 }
 
