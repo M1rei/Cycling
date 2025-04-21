@@ -481,7 +481,7 @@ body {
     background-color: #6366f1;
 }
 
-/* Секция всех маршрутов */
+/* Стили для секции всех маршрутов */
 .all-routes-section {
     padding: 3rem 2rem 5rem 2rem;
     background-color: #f8f9fa;
@@ -489,6 +489,8 @@ body {
 
 .all-routes-section .routes-container {
     margin-top: 2rem;
+    padding-bottom: 2rem; /* Отступ снизу перед кнопкой */
+    justify-content: start; /* Выравниваем карточки по левому краю */
 }
 
 .all-routes-section .route-card {
@@ -614,10 +616,5 @@ body {
 
 .load-more-routes:hover {
     background-color: #495057;
-}
-
-/* Стили для секции всех маршрутов */
-.all-routes-section .routes-container {
-    padding-bottom: 2rem; /* Отступ снизу перед кнопкой */
 }
 
