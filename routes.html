@@ -60,6 +60,34 @@
 
     <section class="all-routes-section">
         <h2 class="section-title">Маршруты</h2>
+        <section class="route-filter-section">
+            <div class="filter-bar">
+                <input type="text" placeholder="Поиск по названию..." class="filter-search">
+                <select class="filter-dropdown">
+                    <option value="all">Все регионы</option>
+                    <option value="moscow">Москва</option>
+                    <option value="sochi">Сочи</option>
+                </select>
+                <select class="filter-dropdown">
+                    <option value="any">Любая сложность</option>
+                    <option value="easy">Легкая</option>
+                    <option value="medium">Средняя</option>
+                    <option value="hard">Высокая</option>
+                </select>
+                <select class="filter-dropdown">
+                    <option value="any">Тип трассы</option>
+                    <option value="mountain">Горные</option>
+                    <option value="forest">Лесные</option>
+                    <option value="city">Городские</option>
+                </select>
+            </div>
+            <div class="filter-tags">
+                <button class="filter-tag active">Все</button>
+                <button class="filter-tag">Горные</button>
+                <button class="filter-tag">Лесные</button>
+                <button class="filter-tag">Городские</button>
+            </div>
+        </section>
         <div class="routes-container">
             <div class="route-card">
                 <img src="img/Mountain1.jpg" alt="Маршрут по набережной">
@@ -154,7 +182,7 @@
             <div class="route-card">
                 <img src="img/City2.jpg" alt="Загородный маршрут">
                 <div class="content">
-                    <h3>«Динозавр “Гав”»</h3>
+                    <h3>«Динозавр "Гав"»</h3>
                     <p class="route-name">Городской маршрут</p>
                     <p>Сложность: Средняя</p>
                     <p>Длина: 11 км</p>
