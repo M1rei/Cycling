@@ -96,6 +96,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Первоначальное применение фильтров при загрузке страницы
     applyFilters();
 
-    // TODO: Логика для кнопки "Загрузить еще"
-
 }); 
