@@ -63,33 +63,31 @@
         <section class="route-filter-section">
             <div class="filter-bar">
                 <input type="text" placeholder="Поиск по названию..." class="filter-search">
-                <select class="filter-dropdown">
+                <select class="filter-dropdown" id="region-filter">
                     <option value="all">Все регионы</option>
                     <option value="moscow">Москва</option>
                     <option value="sochi">Сочи</option>
+                    <option value="altai">Алтай</option>
+                    <option value="ural">Урал</option>
+                    <option value="lipetsk">Липецк</option>
+                    <option value="other">Другие</option>
                 </select>
-                <select class="filter-dropdown">
+                <select class="filter-dropdown" id="difficulty-filter">
                     <option value="any">Любая сложность</option>
                     <option value="easy">Легкая</option>
                     <option value="medium">Средняя</option>
                     <option value="hard">Высокая</option>
                 </select>
-                <select class="filter-dropdown">
-                    <option value="any">Тип трассы</option>
-                    <option value="mountain">Горные</option>
-                    <option value="forest">Лесные</option>
-                    <option value="city">Городские</option>
-                </select>
             </div>
             <div class="filter-tags">
-                <button class="filter-tag active">Все</button>
-                <button class="filter-tag">Горные</button>
-                <button class="filter-tag">Лесные</button>
-                <button class="filter-tag">Городские</button>
+                <button class="filter-tag active" data-type-tag="all">Все</button>
+                <button class="filter-tag" data-type-tag="mountain">Горные</button>
+                <button class="filter-tag" data-type-tag="forest">Лесные</button>
+                <button class="filter-tag" data-type-tag="city">Городские</button>
             </div>
         </section>
         <div class="routes-container">
-            <div class="route-card">
+            <div class="route-card" data-region="other" data-difficulty="medium" data-type="mountain">
                 <img src="img/Mountain1.jpg" alt="Маршрут по набережной">
                 <div class="content">
                     <h3>«Всесоюзная тридцатка»</h3>
@@ -99,7 +97,7 @@
                 </div>
                 <a href="#" class="read-more">Подробнее</a>
             </div>
-            <div class="route-card">
+            <div class="route-card" data-region="altai" data-difficulty="easy" data-type="mountain">
                 <img src="img/Mountain2.jpg" alt="Парковый маршрут">
                 <div class="content">
                     <h3>«Акташ-Гейзеровое озеро»</h3>
@@ -109,7 +107,7 @@
                 </div>
                 <a href="#" class="read-more">Подробнее</a>
             </div>
-            <div class="route-card">
+            <div class="route-card" data-region="ural" data-difficulty="hard" data-type="mountain">
                 <img src="img/Mountain3.jpg" alt="Загородный маршрут">
                 <div class="content">
                     <h3>«Урал»</h3>
@@ -119,7 +117,7 @@
                 </div>
                 <a href="#" class="read-more">Подробнее</a>
             </div>
-            <div class="route-card">
+            <div class="route-card" data-region="lipetsk" data-difficulty="easy" data-type="city">
                 <img src="img/City1.jpg" alt="Маршрут по набережной">
                 <div class="content">
                     <h3>«Центр Липецка»</h3>
@@ -129,7 +127,7 @@
                 </div>
                 <a href="#" class="read-more">Подробнее</a>
             </div>
-            <div class="route-card">
+            <div class="route-card" data-region="other" data-difficulty="easy" data-type="forest">
                 <img src="img/forest2.jpg" alt="Маршрут по набережной">
                 <div class="content">
                     <h3>«Связь времен»</h3>
@@ -139,7 +137,7 @@
                 </div>
                 <a href="#" class="read-more">Подробнее</a>
             </div>
-            <div class="route-card">
+            <div class="route-card" data-region="other" data-difficulty="easy" data-type="forest">
                 <img src="img/forest1.jpg" alt="Маршрут по набережной">
                 <div class="content">
                     <h3>«Малей через лес»</h3>
@@ -149,7 +147,7 @@
                 </div>
                 <a href="#" class="read-more">Подробнее</a>
             </div>
-            <div class="route-card">
+            <div class="route-card" data-region="sochi" data-difficulty="hard" data-type="mountain">
                 <img src="img/Mountain.png" alt="Горный маршрут">
                 <div class="content">
                     <h3>Сочинская кольцевая</h3>
@@ -159,7 +157,7 @@
                 </div>
                 <a href="#" class="read-more">Подробнее</a>
             </div>
-            <div class="route-card">
+            <div class="route-card" data-region="moscow" data-difficulty="medium" data-type="forest">
                 <img src="img/Forest.jpg" alt="Лесной маршрут">
                 <div class="content">
                     <h3>Круг по Национальному парку «Лосиный остров»</h3>
@@ -169,7 +167,7 @@
                 </div>
                 <a href="#" class="read-more">Подробнее</a>
             </div>
-            <div class="route-card">
+            <div class="route-card" data-region="moscow" data-difficulty="easy" data-type="city">
                 <img src="img/City.jpg" alt="Городской маршрут">
                 <div class="content">
                     <h3>«Садовое кольцо» в Москве</h3>
@@ -179,7 +177,7 @@
                 </div>
                 <a href="#" class="read-more">Подробнее</a>
             </div>
-            <div class="route-card">
+            <div class="route-card" data-region="other" data-difficulty="medium" data-type="city">
                 <img src="img/City2.jpg" alt="Загородный маршрут">
                 <div class="content">
                     <h3>«Динозавр "Гав"»</h3>
@@ -191,5 +189,8 @@
             </div>
         </div>
     </section>
+
+<script src="route-filter.js" defer></script>
+
 </body>
 </html> 
