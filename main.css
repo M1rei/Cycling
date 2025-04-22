@@ -644,6 +644,9 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .athlete-card:hover {
@@ -658,6 +661,10 @@ body {
 
 .athlete-info {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
 }
 
 .athlete-info h2 {
@@ -672,19 +679,20 @@ body {
 }
 
 .athlete-details {
+    margin-top: auto;
     display: inline-block;
-    padding: 0.5rem 1rem;
-    color: #6366f1;
+    padding: 0.75rem 1.5rem;
+    background-color: #6366f1;
+    color: white;
     text-decoration: none;
-    font-weight: 500;
-    border: 2px solid #6366f1;
     border-radius: 6px;
-    transition: all 0.3s;
+    transition: background-color 0.3s;
+    text-align: center;
+    width: fit-content;
 }
 
 .athlete-details:hover {
-    background-color: #6366f1;
-    color: white;
+    background-color: #4f46e5;
 }
 
 .legends-section {
