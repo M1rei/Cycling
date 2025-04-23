@@ -675,7 +675,7 @@ body {
 
 .athlete-info p {
     color: #666;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .athlete-details {
@@ -722,5 +722,21 @@ body {
 
 .legends-list li:last-child {
     border-bottom: none;
+}
+
+/* Стили для фильтров */
+.athletes-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.filter-dropdown {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    min-width: 200px;
 }
 
