@@ -740,3 +740,123 @@ body {
     min-width: 200px;
 }
 
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: modalOpen 0.3s ease-out;
+}
+
+@keyframes modalOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+    z-index: 1;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.modal-athlete-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.modal-athlete-main-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-athlete-name {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.modal-athlete-country,
+.modal-athlete-discipline {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0;
+}
+
+.modal-athlete-achievements {
+    margin-top: 15px;
+}
+
+.modal-athlete-achievements p {
+    margin: 8px 0;
+    font-size: 1.1rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-athlete-bio {
+    margin-top: 30px;
+    line-height: 1.6;
+    color: #555;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.modal-athlete-bio p {
+    margin-bottom: 15px;
+}
+
+/* Добавляем класс для блокировки прокрутки body при открытом модальном окне */
+.modal-open {
+    overflow: hidden;
+}
+
