@@ -352,18 +352,39 @@ body {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
     transition: transform 0.3s ease;
+    padding: 2px; /* Добавляем отступ для градиентной обводки */
+    background: linear-gradient(45deg, #00c2ff, #7d2ae8);
 }
 
-.gear-card:hover {
-    transform: translateY(-5px);
+.gear-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    background: white;
+    z-index: 1;
+}
+
+.gear-card > * {
+    position: relative;
+    z-index: 2;
 }
 
 .gear-card img {
     width: 100%;
     height: 250px;
     object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.gear-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 194, 255, 0.1);
 }
 
 .gear-card h3 {
@@ -396,6 +417,120 @@ body {
 .read-review:hover {
     color: white;
     background-color: #6366f1;
+}
+
+/* Стили для контейнера с информацией о снаряжении */
+.gear-info-container {
+    display: none;
+    position: absolute;
+    top: 2px; /* Учитываем отступ для градиентной обводки */
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: inset 0 0 20px rgba(99, 102, 241, 0.1);
+}
+
+.gear-info-container.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.gear-card.info-visible .gear-image,
+.gear-card.info-visible .gear-title,
+.gear-card.info-visible .gear-description,
+.gear-card.info-visible .read-review {
+    display: none;
+}
+
+.gear-info-content {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.gear-info-content h3 {
+    font-size: 1.8rem;
+    color: #2d3748;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    background: linear-gradient(120deg, #2d3748, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.gear-info-content p {
+    color: #4a5568;
+    line-height: 1.8;
+    white-space: pre-line;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Стили для характеристик */
+.gear-info-content p strong,
+.gear-info-content p b {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+/* Стили для маркированных списков */
+.gear-info-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.gear-info-content ul li {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 0.5em;
+    color: #4a5568;
+}
+
+.gear-info-content ul li:before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #6366f1;
+    font-weight: bold;
+}
+
+.close-gear-info {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #6366f1;
+    cursor: pointer;
+    padding: 15px;
+    margin-top: auto;
+    z-index: 11;
+    transition: all 0.3s ease;
+}
+
+.close-gear-info:hover {
+    color: #4f46e5;
+}
+
+.close-gear-info i {
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(99, 102, 241, 0.2));
+}
+
+.close-gear-info:hover i {
+    transform: translateY(5px);
 }
 
 /* Секция маршрутов - используется на странице велотрасс (routes.html) */
