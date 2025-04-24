@@ -860,3 +860,30 @@ body {
     overflow: hidden;
 }
 
+/* Стили для модального окна руководств */
+.modal-guide-main-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-guide-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-guide-content {
+    line-height: 1.6;
+    color: #555;
+    font-size: 1.1rem;
+    padding: 0 20px;
+}
+
+.modal-guide-content p {
+    white-space: pre-line;
+    margin-bottom: 15px;
+}
+
