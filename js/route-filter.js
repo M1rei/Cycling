@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterTagsContainer = document.querySelector('.filter-tags');
     const routeCardsContainer = document.querySelector('.all-routes-section .routes-container');
     const routeCards = routeCardsContainer ? routeCardsContainer.querySelectorAll('.route-card') : [];
+    const modal = document.getElementById('routeModal');
+    const closeModal = document.querySelector('.close-modal');
+    const body = document.body;
 
     if (!routeCardsContainer) {
         console.error('Контейнер карточек маршрутов не найден!');
@@ -31,6 +34,95 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.display = '';
             } else {
                 card.style.display = 'none';
+            }
+        });
+    }
+
+    let currentRouteUrl = '';
+
+    // Функция для открытия модального окна
+    function openRouteModal(routeData) {
+        const modalTitle = modal.querySelector('.modal-title');
+        const distance = modal.querySelector('.distance');
+        const elevation = modal.querySelector('.elevation');
+        const description = modal.querySelector('.route-description');
+        const difficultyStars = modal.querySelector('.difficulty-stars');
+
+        modalTitle.textContent = routeData.title;
+        distance.textContent = routeData.distance;
+        elevation.textContent = routeData.elevation;
+        description.textContent = routeData.description;
+        currentRouteUrl = routeData.url;
+
+        // Очищаем и добавляем звезды сложности
+        difficultyStars.innerHTML = '';
+        for (let i = 0; i < routeData.difficulty; i++) {
+            const star = document.createElement('i');
+            star.className = 'fas fa-star';
+            difficultyStars.appendChild(star);
+        }
+
+        // Фиксируем положение страницы
+        const scrollY = window.scrollY;
+        body.style.position = 'fixed';
+        body.style.top = `-${scrollY}px`;
+        body.style.width = '100%';
+        
+        modal.style.display = 'block';
+    }
+
+    // Функция для закрытия модального окна
+    function closeRouteModal() {
+        const scrollY = parseInt(body.style.top || '0');
+        body.style.position = '';
+        body.style.top = '';
+        body.style.width = '';
+        window.scrollTo(0, -scrollY);
+        
+        modal.style.display = 'none';
+    }
+
+    // Функция для получения данных маршрута из карточки
+    function getRouteDataFromCard(card) {
+        return {
+            title: card.querySelector('h3').textContent,
+            distance: card.dataset.distance || card.querySelector('.route-name').textContent,
+            elevation: card.dataset.elevation || '350 м',
+            difficulty: parseInt(card.dataset.difficulty === 'hard' ? 3 : card.dataset.difficulty === 'medium' ? 2 : 1),
+            description: card.dataset.description || 'Маршрут проходит через живописные места, подходит для велосипедистов.',
+            url: card.dataset.url || '#'
+        };
+    }
+
+    // Обработчики событий для модального окна в обеих секциях
+    document.querySelectorAll('.route-card').forEach(card => {
+        const readMoreBtn = card.querySelector('.read-more');
+        if (readMoreBtn) {
+            readMoreBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const routeData = getRouteDataFromCard(card);
+                openRouteModal(routeData);
+            });
+        }
+    });
+
+    if (closeModal) {
+        closeModal.addEventListener('click', closeRouteModal);
+    }
+
+    // Закрытие модального окна при клике вне его
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeRouteModal();
+        }
+    });
+
+    // Обработчик для кнопки "Открыть"
+    const openNavigatorBtn = modal.querySelector('.open-navigator');
+    if (openNavigatorBtn) {
+        openNavigatorBtn.addEventListener('click', () => {
+            if (currentRouteUrl && currentRouteUrl !== '#') {
+                window.open(currentRouteUrl, '_blank');
             }
         });
     }
