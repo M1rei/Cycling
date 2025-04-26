@@ -1135,7 +1135,7 @@ body {
 
 /* Минималистичный футер по макету */
 .site-footer {
-    background: #fafbfc;
+    background: #f8fbfa;
     border-top: 1px solid #ececec;
     display: flex;
     justify-content: space-between;
@@ -1143,7 +1143,7 @@ body {
     padding: 18px 40px 14px 40px;
     font-size: 15px;
     color: #444;
-    margin-top: 40px;
+    margin-top: 0;
     flex-wrap: wrap;
 }
 
@@ -1164,7 +1164,7 @@ body {
 }
 
 .footer-left a:hover {
-    color: #357abd;
+    color: #450fb1;
     text-decoration: underline;
 }
 
@@ -1175,7 +1175,7 @@ body {
 }
 
 .footer-social {
-    color: #357abd;
+    color: #444;
     font-size: 20px;
     transition: color 0.2s;
 }
@@ -1193,6 +1193,72 @@ body {
     }
     .footer-right {
         margin-top: 10px;
+    }
+}
+
+/* Блок преимуществ на главной */
+.features-section {
+    background: #f8fbfa; /* чуть темнее, чтобы не было белой полосы */
+    padding: 48px 0 40px 0;
+}
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 24px;
+}
+.feature-item {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    border-radius: 16px;
+    padding: 32px 10px 24px 10px;
+    min-width: 200px;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: featureFadeIn 0.8s cubic-bezier(.4,1.4,.6,1) forwards;
+}
+.feature-item:nth-child(2) { animation-delay: 0.15s; }
+.feature-item:nth-child(3) { animation-delay: 0.3s; }
+.feature-item:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes featureFadeIn {
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+.feature-icon {
+    font-size: 54px;
+    margin-bottom: 24px;
+    line-height: 1;
+    transition: transform 0.3s cubic-bezier(.4,1.4,.6,1);
+}
+.feature-item:hover .feature-icon {
+    transform: scale(1.18) rotate(-8deg);
+}
+.feature-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111;
+    text-align: center;
+    line-height: 1.2;
+    transition: color 0.3s;
+}
+.feature-item:hover .feature-title {
+    color: #357abd;
+}
+@media (max-width: 900px) {
+    .features-container {
+        flex-direction: column;
+        gap: 32px;
+    }
+    .feature-item {
+        min-width: unset;
     }
 }
 
