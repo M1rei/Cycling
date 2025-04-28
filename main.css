@@ -1345,6 +1345,16 @@ body {
     .hero-subtitle {
         font-size: 1rem;
     }
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.7rem;
+    }
+    .filter-search, .filter-dropdown {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
 }
 
 @media (max-width: 500px) {
