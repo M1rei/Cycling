@@ -1162,15 +1162,14 @@ main {
 /* Минималистичный футер по макету */
 .site-footer {
     background: #f8fbfa;
-    border-top: 1px solid #ececec;
+    padding: 2rem 0;
+    margin-top: auto;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 40px 14px 40px;
-    font-size: 15px;
-    color: #444;
-    margin-top: 0;
     flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .footer-left {
