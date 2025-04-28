@@ -1162,7 +1162,7 @@ main {
 /* Минималистичный футер по макету */
 .site-footer {
     background: #f8fbfa;
-    padding: 2rem 0;
+    padding: 2rem;
     margin-top: auto;
     width: 100%;
     display: flex;
