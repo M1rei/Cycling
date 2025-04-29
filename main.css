@@ -1471,3 +1471,56 @@ main {
     }
 }
 
+/* --- Новости --- */
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+.news-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 24px;
+}
+.news-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+.news-date {
+    color: #aaa;
+    font-size: 15px;
+    margin: 16px 0 0 0;
+    align-self: flex-start;
+    margin-left: 16px;
+}
+.news-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 16px 16px 0 16px;
+    text-align: left;
+}
+.news-btn {
+    margin-top: 24px;
+    padding: 10px 32px;
+    background: #1a7ee7;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.news-btn:hover {
+    background: #155fa0;
+}
+
