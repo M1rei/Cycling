@@ -1229,8 +1229,25 @@ main {
     transition: color 0.2s;
 }
 
-.footer-social:hover {
-    color: #e74c3c;
+/* Цвета иконок социальных сетей при наведении */
+.footer-social[aria-label="X"]:hover i {
+    background: linear-gradient(45deg, #000, #ffd700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.footer-social[aria-label="VK"]:hover i {
+    color: #4a76a8;
+}
+
+.footer-social[aria-label="Telegram"]:hover i {
+    color: #0088cc;
+}
+
+.footer-social[aria-label="YouTube"]:hover i {
+    color: #ff0000;
 }
 
 @media (max-width: 600px) {
