@@ -1318,6 +1318,38 @@ main {
 .feature-item:hover .feature-title {
     color: #357abd;
 }
+.feature-item:nth-child(1):hover .feature-title {
+    background: linear-gradient(45deg, #ffb347, #ff6a00, #ff3c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transition: background 0.3s;
+}
+.feature-item:nth-child(2):hover .feature-title {
+    background: linear-gradient(45deg, #4f8cff, #6366f1, #7d2ae8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transition: background 0.3s;
+}
+.feature-item:nth-child(3):hover .feature-title {
+    background: linear-gradient(45deg, #43e97b, #38f9d7, #00c2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transition: background 0.3s;
+}
+.feature-item:nth-child(4):hover .feature-title {
+    background: linear-gradient(45deg, #ff6a00, #ee0979, #ffb347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transition: background 0.3s;
+}
 @media (max-width: 900px) {
     .features-container {
         flex-direction: column;
