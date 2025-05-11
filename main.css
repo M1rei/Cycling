@@ -58,6 +58,18 @@ main {
     font-weight: bold;
 }
 
+.logo a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo a:hover {
+    opacity: 0.8;
+}
+
 /* Навигационное меню в шапке */
 .nav {
     margin-left: 2rem;
