@@ -294,8 +294,11 @@ main {
 
 .guide-card img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    display: block;
+    background: #f6f6f6;
 }
 
 .guide-card h3 {
@@ -421,9 +424,11 @@ main {
 
 .gear-card img {
     width: 100%;
-    height: 250px;
+    height: 220px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
+    display: block;
+    background: #f6f6f6;
 }
 
 .gear-card:hover {
@@ -1636,10 +1641,11 @@ main {
 
 .gear-card img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 1rem;
+    border-radius: 10px 10px 0 0;
+    display: block;
+    background: #f6f6f6;
 }
 
 .gear-card h3 {
