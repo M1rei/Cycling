@@ -1,124 +1,131 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.filter-search');
-    const difficultyDropdown = document.querySelector('#difficulty-filter');
-    const filterTagsContainer = document.querySelector('.filter-tags');
-    const routeCardsContainer = document.querySelector('.all-routes-section .routes-container');
-    const routeCards = routeCardsContainer ? routeCardsContainer.querySelectorAll('.route-card') : [];
+    const difficultyFilter = document.getElementById('difficulty-filter');
+    const typeTags = document.querySelectorAll('.filter-tag');
+    const routesContainer = document.querySelectorAll('.routes-container');
     const modal = document.getElementById('routeModal');
-    const closeModal = document.querySelector('.close-modal');
-    const body = document.body;
+    const closeModal = modal.querySelector('.close-modal, .close-modal span');
+    const openNavigatorBtn = modal.querySelector('.open-navigator');
+    let currentRouteUrl = '#';
+    let routesData = [];
 
-    if (!routeCardsContainer) {
-        console.error('Контейнер карточек маршрутов не найден!');
-        return;
+    // Загрузка данных из JSON
+    async function fetchRoutes() {
+        const response = await fetch('data/routes.json');
+        routesData = await response.json();
+        renderRoutes();
     }
 
-    let currentFilters = {
-        searchTerm: '',
-        difficulty: 'any',
-        typeTag: 'all'
-    };
+    // Генерация карточек маршрутов
+    function renderRoutes() {
+        // Для всех контейнеров (на странице их два)
+        routesContainer.forEach(container => {
+            container.innerHTML = '';
+            routesData.forEach(route => {
+                // Фильтрация по сложности, типу и поиску
+                const selectedDifficulty = difficultyFilter ? difficultyFilter.value : 'any';
+                const activeTypeTag = document.querySelector('.filter-tag.active');
+                const selectedType = activeTypeTag ? activeTypeTag.dataset.typeTag : 'all';
+                const searchValue = searchInput ? searchInput.value.toLowerCase() : '';
 
-    function applyFilters() {
-        routeCards.forEach(card => {
-            const titleElement = card.querySelector('h3');
-            const title = titleElement ? titleElement.textContent.toLowerCase() : '';
-            const difficulty = card.dataset.difficulty || 'any';
-            const type = card.dataset.type || 'any';
+                const difficultyMatch = selectedDifficulty === 'any' ||
+                    (selectedDifficulty === 'easy' && route.difficulty === 'Легкая') ||
+                    (selectedDifficulty === 'medium' && route.difficulty === 'Средняя') ||
+                    (selectedDifficulty === 'hard' && route.difficulty === 'Сложная');
+                const typeMatch = selectedType === 'all' ||
+                    (selectedType === 'mountain' && route.type.includes('Горный')) ||
+                    (selectedType === 'forest' && route.type.includes('Лесной')) ||
+                    (selectedType === 'city' && route.type.includes('Городской'));
+                const searchMatch = !searchValue || route.name.toLowerCase().includes(searchValue);
 
-            const searchMatch = currentFilters.searchTerm === '' || title.includes(currentFilters.searchTerm);
-            const difficultyMatch = currentFilters.difficulty === 'any' || difficulty === currentFilters.difficulty;
-            const typeTagMatch = currentFilters.typeTag === 'all' || type === currentFilters.typeTag;
+                if (difficultyMatch && typeMatch && searchMatch) {
+                    const card = document.createElement('div');
+                    card.className = 'route-card';
+                    card.innerHTML = `
+                        <img src="${route.image}" alt="${route.name}">
+                        <div class="content">
+                            <h3>${route.name}</h3>
+                            <p class="route-name">${route.type}</p>
+                            <p>Сложность: ${route.difficulty}</p>
+                            <p>Длина: ${route.distance} км</p>
+                        </div>
+                        <a href="#" class="read-more">Подробнее</a>
+                    `;
+                    // Для модального окна нужны data-атрибуты
+                    card.dataset.distance = route.distance;
+                    card.dataset.elevation = route.elevation;
+                    card.dataset.difficulty = route.difficulty;
+                    card.dataset.description = route.description;
+                    card.dataset.url = route.link;
+                    card.dataset.rating = route.rating;
+                    container.appendChild(card);
+                }
+            });
+        });
+        attachModalHandlers();
+    }
 
-            if (searchMatch && difficultyMatch && typeTagMatch) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
+    // Обработчики фильтров
+    if (difficultyFilter) difficultyFilter.addEventListener('change', renderRoutes);
+    if (searchInput) searchInput.addEventListener('input', renderRoutes);
+    typeTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            typeTags.forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
+            renderRoutes();
+        });
+    });
+
+    // Модальное окно
+    function attachModalHandlers() {
+        document.querySelectorAll('.read-more').forEach(btn => {
+            btn.onclick = function(e) {
+                e.preventDefault();
+                const card = btn.closest('.route-card');
+                openRouteModal(card);
+            };
         });
     }
 
-    let currentRouteUrl = '';
-
-    // Функция для открытия модального окна
-    function openRouteModal(routeData) {
+    function openRouteModal(card) {
         const modalTitle = modal.querySelector('.modal-title');
         const distance = modal.querySelector('.distance');
         const elevation = modal.querySelector('.elevation');
         const description = modal.querySelector('.route-description');
         const difficultyStars = modal.querySelector('.difficulty-stars');
+        const rating = parseInt(card.dataset.rating || '1');
 
-        modalTitle.textContent = routeData.title;
-        distance.textContent = routeData.distance;
-        elevation.textContent = routeData.elevation;
-        description.textContent = routeData.description;
-        currentRouteUrl = routeData.url;
+        modalTitle.textContent = card.querySelector('h3').textContent;
+        distance.textContent = card.dataset.distance + ' км';
+        elevation.textContent = card.dataset.elevation + ' м';
+        description.textContent = card.dataset.description;
+        currentRouteUrl = card.dataset.url;
 
-        // Очищаем и добавляем звезды сложности
+        // Звезды сложности
         difficultyStars.innerHTML = '';
-        for (let i = 0; i < routeData.difficulty; i++) {
+        for (let i = 0; i < rating; i++) {
             const star = document.createElement('i');
             star.className = 'fas fa-star';
             difficultyStars.appendChild(star);
         }
 
-        // Фиксируем положение страницы
-        const scrollY = window.scrollY;
-        body.style.position = 'fixed';
-        body.style.top = `-${scrollY}px`;
-        body.style.width = '100%';
-        
         modal.style.display = 'block';
+        document.body.classList.add('modal-open');
     }
 
-    // Функция для закрытия модального окна
     function closeRouteModal() {
-        const scrollY = parseInt(body.style.top || '0');
-        body.style.position = '';
-        body.style.top = '';
-        body.style.width = '';
-        window.scrollTo(0, -scrollY);
-        
         modal.style.display = 'none';
+        document.body.classList.remove('modal-open');
     }
 
-    // Функция для получения данных маршрута из карточки
-    function getRouteDataFromCard(card) {
-        return {
-            title: card.querySelector('h3').textContent,
-            distance: card.dataset.distance || card.querySelector('.route-name').textContent,
-            elevation: card.dataset.elevation || '350 м',
-            difficulty: parseInt(card.dataset.difficulty === 'hard' ? 3 : card.dataset.difficulty === 'medium' ? 2 : 1),
-            description: card.dataset.description || 'Маршрут проходит через живописные места, подходит для велосипедистов.',
-            url: card.dataset.url || '#'
-        };
+    if (modal.querySelector('.close-modal')) {
+        modal.querySelector('.close-modal').addEventListener('click', closeRouteModal);
     }
-
-    // Обработчики событий для модального окна в обеих секциях
-    document.querySelectorAll('.route-card').forEach(card => {
-        const readMoreBtn = card.querySelector('.read-more');
-        if (readMoreBtn) {
-            readMoreBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const routeData = getRouteDataFromCard(card);
-                openRouteModal(routeData);
-            });
-        }
-    });
-
-    if (closeModal) {
-        closeModal.addEventListener('click', closeRouteModal);
-    }
-
-    // Закрытие модального окна при клике вне его
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
             closeRouteModal();
         }
     });
-
-    // Обработчик для кнопки "Открыть"
-    const openNavigatorBtn = modal.querySelector('.open-navigator');
     if (openNavigatorBtn) {
         openNavigatorBtn.addEventListener('click', () => {
             if (currentRouteUrl && currentRouteUrl !== '#') {
@@ -127,34 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Обработчик для поля поиска
-    if (searchInput) {
-        searchInput.addEventListener('input', (event) => {
-            currentFilters.searchTerm = event.target.value.toLowerCase().trim();
-            applyFilters();
-        });
-    }
-
-    // Обработчик для сложности
-    if (difficultyDropdown) {
-        difficultyDropdown.addEventListener('change', (event) => {
-            currentFilters.difficulty = event.target.value;
-            applyFilters();
-        });
-    }
-
-    // Обработчик для тегов типа
-    if (filterTagsContainer) {
-        filterTagsContainer.addEventListener('click', (event) => {
-            if (event.target.classList.contains('filter-tag')) {
-                filterTagsContainer.querySelectorAll('.filter-tag').forEach(tag => tag.classList.remove('active'));
-                event.target.classList.add('active');
-                currentFilters.typeTag = event.target.dataset.typeTag || 'all';
-                applyFilters();
-            }
-        });
-    }
-
-    // Первоначальное применение фильтров при загрузке страницы
-    applyFilters();
+    // Запуск
+    fetchRoutes();
 }); 

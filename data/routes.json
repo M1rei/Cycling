@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "По Аксаковским местам",
+    "image": "img/forest1.jpg",
+    "type": "Лесной маршрут",
+    "difficulty": "Легкая",
+    "distance": 276,
+    "elevation": 280,
+    "rating": 2,
+    "description": "Увлекательный маршрут по местам, связанным с жизнью и творчеством С.Т. Аксакова. Живописные лесные тропы, исторические места и потрясающие виды.",
+    "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-ufa-abdulino-1/"
+  },
+  {
+    "id": 2,
+    "name": "Горнозаводской Урал",
+    "image": "img/Mountain1.jpg",
+    "type": "Горный маршрут",
+    "difficulty": "Средняя",
+    "distance": 297,
+    "elevation": 850,
+    "rating": 2,
+    "description": "Захватывающий маршрут по историческим местам горнозаводского Урала. Сочетание горных подъемов, живописных спусков и уникальных индустриальных пейзажей.",
+    "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-ufa-berdjaush-2/"
+  },
+  {
+    "id": 3,
+    "name": "Самара (по городу)",
+    "image": "img/City1.jpg",
+    "type": "Городской маршрут",
+    "difficulty": "Легкая",
+    "distance": 33,
+    "elevation": 120,
+    "rating": 1,
+    "description": "Городской маршрут по самым интересным местам Самары. Идеально подходит для знакомства с городом, включает посещение набережной, исторического центра и современных районов.",
+    "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-samara-po-gorodu-18/"
+  },
+  {
+    "id": 4,
+    "name": "Устье реки Белой",
+    "image": "img/forest2.jpg",
+    "type": "Лесной маршрут",
+    "difficulty": "Легкая",
+    "distance": 306,
+    "elevation": 200,
+    "rating": 1,
+    "description": "Живописный маршрут вдоль реки Белой, проходящий через красивейшие леса и природные достопримечательности. Отличный выбор для любителей природы.",
+    "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-kambarka-kandry-5/"
+  },
+  {
+    "id": 5,
+    "name": "Сердце Южного Урала",
+    "image": "img/Mountain2.jpg",
+    "type": "Горный маршрут",
+    "difficulty": "Средняя",
+    "distance": 380,
+    "elevation": 1100,
+    "rating": 2,
+    "description": "Захватывающий маршрут по самым красивым местам Южного Урала. Сложные подъемы, красивые перевалы и потрясающие горные пейзажи.",
+    "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-meleuz-magnitogorsk-9/"
+  },
+  {
+    "id": 6,
+    "name": "Псковская область: от Пушкинских Гор до Пскова",
+    "image": "img/forest3.jpg",
+    "type": "Лесной маршрут",
+    "difficulty": "Средняя",
+    "distance": 200,
+    "elevation": 250,
+    "rating": 2,
+    "description": "Исторический маршрут от Пушкинских Гор до Пскова. Сочетание культурного наследия и природных красот, проходит через старинные усадьбы и монастыри.",
+    "link": "https://www.onetwotrip.com/ru/blog/guides/russian-federation/samye-krasivye-velomarshruty-rossii/"
+  },
+  {
+    "id": 7,
+    "name": "Карелия и Ленинградская область: вдоль западного берега Ладожского озера",
+    "image": "img/forest4.jpg",
+    "type": "Лесной маршрут",
+    "difficulty": "Средняя",
+    "distance": 350,
+    "elevation": 400,
+    "rating": 2,
+    "description": "Живописный маршрут вдоль западного берега Ладожского озера. Сочетание карельской природы, исторических мест и потрясающих видов на озеро.",
+    "link": "https://www.onetwotrip.com/ru/blog/guides/russian-federation/samye-krasivye-velomarshruty-rossii/"
+  },
+  {
+    "id": 8,
+    "name": "Республика Алтай: путешествие по Чуйскому тракту",
+    "image": "img/Mountain3.jpg",
+    "type": "Горный маршрут",
+    "difficulty": "Сложная",
+    "distance": 460,
+    "elevation": 1500,
+    "rating": 3,
+    "description": "Легендарный маршрут по Чуйскому тракту в Республике Алтай. Один из красивейших маршрутов России с потрясающими горными пейзажами и историческими достопримечательностями.",
+    "link": "https://www.onetwotrip.com/ru/blog/guides/russian-federation/samye-krasivye-velomarshruty-rossii/"
+  },
+  {
+    "id": 9,
+    "name": "Адыгея и Краснодарский край: 'Всесоюзная тридцатка' от гор к морю",
+    "image": "img/Mountain4.jpg",
+    "type": "Горный маршрут",
+    "difficulty": "Сложная",
+    "distance": 60,
+    "elevation": 900,
+    "rating": 3,
+    "description": "Знаменитый маршрут 'Всесоюзная тридцатка' от гор к морю. Сочетание горных перевалов, морских пейзажей и субтропической природы.",
+    "link": "https://www.onetwotrip.com/ru/blog/guides/russian-federation/samye-krasivye-velomarshruty-rossii/"
+  },
+  {
+    "id": 10,
+    "name": "По городам Золотого кольца России: из Углича в Суздаль",
+    "image": "img/City2.jpg",
+    "type": "Городской маршрут",
+    "difficulty": "Средняя",
+    "distance": 400,
+    "elevation": 150,
+    "rating": 2,
+    "description": "Культурно-исторический маршрут по городам Золотого кольца России. Проходит через древние города с богатой историей, храмами и музеями.",
+    "link": "https://www.onetwotrip.com/ru/blog/guides/russian-federation/samye-krasivye-velomarshruty-rossii/"
+  }
+] 
