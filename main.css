@@ -1553,9 +1553,8 @@ main {
 
 /* --- Новости --- */
 .news-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     margin-top: 40px;
 }
@@ -1713,5 +1712,11 @@ main {
 html {
     scrollbar-width: thin;
     scrollbar-color: #4f8cff #222;
+}
+
+.news-article-main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 120px;
 }
 
