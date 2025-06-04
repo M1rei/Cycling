@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.filter-search');
     const difficultyFilter = document.getElementById('difficulty-filter');
     const typeTags = document.querySelectorAll('.filter-tag');
-    const routesContainer = document.querySelectorAll('.routes-container');
+    const containers = document.querySelectorAll('.routes-container');
     const modal = document.getElementById('routeModal');
     const closeModal = modal.querySelector('.close-modal, .close-modal span');
     const openNavigatorBtn = modal.querySelector('.open-navigator');
@@ -18,11 +18,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Генерация карточек маршрутов
     function renderRoutes() {
-        // Для всех контейнеров (на странице их два)
-        routesContainer.forEach(container => {
-            container.innerHTML = '';
+        // Первый контейнер — популярные маршруты (только 3)
+        if (containers[0]) {
+            containers[0].innerHTML = '';
+            routesData.slice(0, 3).forEach(route => {
+                const card = document.createElement('div');
+                card.className = 'route-card';
+                card.innerHTML = `
+                    <img src="${route.image}" alt="${route.name}">
+                    <div class="content">
+                        <h3>${route.name}</h3>
+                        <p class="route-name">${route.type}</p>
+                        <p>Сложность: ${route.difficulty}</p>
+                        <p>Длина: ${route.distance} км</p>
+                    </div>
+                    <a href="#" class="read-more">Подробнее</a>
+                `;
+                card.dataset.distance = route.distance;
+                card.dataset.elevation = route.elevation;
+                card.dataset.difficulty = route.difficulty;
+                card.dataset.description = route.description;
+                card.dataset.url = route.link;
+                card.dataset.rating = route.rating;
+                containers[0].appendChild(card);
+            });
+        }
+        // Второй контейнер — все маршруты с фильтрацией
+        if (containers[1]) {
+            containers[1].innerHTML = '';
             routesData.forEach(route => {
-                // Фильтрация по сложности, типу и поиску
                 const selectedDifficulty = difficultyFilter ? difficultyFilter.value : 'any';
                 const activeTypeTag = document.querySelector('.filter-tag.active');
                 const selectedType = activeTypeTag ? activeTypeTag.dataset.typeTag : 'all';
@@ -51,17 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <a href="#" class="read-more">Подробнее</a>
                     `;
-                    // Для модального окна нужны data-атрибуты
                     card.dataset.distance = route.distance;
                     card.dataset.elevation = route.elevation;
                     card.dataset.difficulty = route.difficulty;
                     card.dataset.description = route.description;
                     card.dataset.url = route.link;
                     card.dataset.rating = route.rating;
-                    container.appendChild(card);
+                    containers[1].appendChild(card);
                 }
             });
-        });
+        }
         attachModalHandlers();
     }
 

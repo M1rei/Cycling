@@ -108,10 +108,11 @@ main {
 .hero-section {
     position: relative;
     width: 100%;
-    height: 700px;
+    min-height: 600px;
+    height: 1000px;
     background-image: url('img/backgroundmain.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
@@ -1404,9 +1405,14 @@ main {
     .section-title {
         font-size: 1.5rem;
     }
+    .hero-section {
+        height: 500px;
+        min-height: 320px;
+        background-position: center top;
+    }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     .header {
         padding: 0.5rem 0.5rem;
     }
@@ -1434,9 +1440,10 @@ main {
     .routes-container {
         grid-template-columns: 1fr;
     }
-    .hero-section,
-    .hero-section.resources-hero {
-        height: 320px;
+    .hero-section {
+        height: 300px;
+        min-height: 120px;
+        background-position: center top;
     }
     .hero-title {
         font-size: 2rem;
@@ -1537,17 +1544,19 @@ main {
 }
 
 .hero-section.resources-hero {
-    height: 700px;
-    min-height: 320px;
+    height: 1000px;
+    min-height: 600px;
 }
 @media (max-width: 900px) {
     .hero-section.resources-hero {
-        height: 400px;
+        height: 500px;
+        min-height: 320px;
     }
 }
 @media (max-width: 600px) {
     .hero-section.resources-hero {
-        height: 220px;
+        height: 300px;
+        min-height: 120px;
     }
 }
 
@@ -1581,23 +1590,27 @@ main {
     align-self: flex-start;
     margin-left: 16px;
 }
-.news-title {
-    font-size: 22px;
-    font-weight: 700;
-    margin: 16px 16px 0 16px;
+.news-card .news-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #222;
     text-align: left;
+    margin: 16px 16px 0 16px;
+    line-height: 1.3;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 .news-btn {
-    margin-top: 24px;
+    margin-top: 25px;
     padding: 10px 32px;
     background: #1a7ee7;
     color: #fff;
     border: none;
     border-radius: 6px;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
+    letter-spacing: 0.02em;
 }
 .news-btn:hover {
     background: #155fa0;
@@ -1718,5 +1731,118 @@ html {
     max-width: 900px;
     margin: 0 auto;
     padding-top: 120px;
+}
+
+/* Секция новостей */
+.news-section {
+    padding: 50px 0 40px 0;
+    background: #f8f9fb;
+}
+
+.news-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: #222;
+}
+
+.news-cards {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.news-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    overflow: hidden;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.news-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+.news-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 20px 20px 16px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card-title {
+    font-size: 1.18rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.news-date {
+    font-size: 0.98rem;
+    color: #888;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.news-description {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 18px;
+    flex: 1;
+}
+
+.news-more {
+    color: #ff7f2a;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.news-more:hover {
+    color: #e65c00;
+}
+
+.news-all-btn {
+    text-align: center;
+}
+
+.btn-orange {
+    background: #ff7f2a;
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+    box-shadow: 0 2px 8px rgba(255,127,42,0.08);
+}
+
+.btn-orange:hover {
+    background: #e65c00;
+}
+
+.news-card {
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
