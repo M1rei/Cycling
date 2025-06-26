@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                         <h2>${athlete.name}</h2>
                         <p>${athlete.country}</p>
                         <p>${athlete.discipline}</p>
-                        ${athlete.achievements.map(a => `<p>${a}</p>`).join('')}
+                        ${athlete.achievements ? athlete.achievements.map(a => `<p>${a}</p>`).join('') : ''}
                         <a href="#" class="athlete-details">Подробнее</a>
                     </div>
                 `;
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     document.querySelector('.modal-athlete-discipline').textContent = athlete.discipline;
                     document.querySelector('.modal-athlete-image').src = athlete.photo;
                     document.querySelector('.modal-athlete-image').alt = athlete.name;
-                    document.querySelector('.modal-athlete-achievements').innerHTML = athlete.achievements.map(a => `<p>${a}</p>`).join('');
+                    document.querySelector('.modal-athlete-achievements').innerHTML = athlete.achievements ? athlete.achievements.map(a => `<p>${a}</p>`).join('') : '';
                     document.querySelector('.modal-athlete-bio').innerHTML = `<p>${athlete.bio}</p>`;
                     modal.style.display = 'block';
                     document.body.classList.add('modal-open');
