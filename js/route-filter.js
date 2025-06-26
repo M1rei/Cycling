@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.filter-search');
     const difficultyFilter = document.getElementById('difficulty-filter');
+    const regionFilter = document.getElementById('region-filter');
     const typeTags = document.querySelectorAll('.filter-tag');
     const containers = document.querySelectorAll('.routes-container');
     const modal = document.getElementById('routeModal');
@@ -13,7 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchRoutes() {
         const response = await fetch('data/routes.json');
         routesData = await response.json();
+        populateRegionFilter();
         renderRoutes();
+    }
+
+    function populateRegionFilter() {
+        const regions = [...new Set(routesData.map(route => route.region))];
+        regions.sort();
+        regions.forEach(region => {
+            const option = document.createElement('option');
+            option.value = region;
+            option.textContent = region;
+            regionFilter.appendChild(option);
+        });
     }
 
     // Генерация карточек маршрутов
@@ -21,13 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Первый контейнер — популярные маршруты (только 3)
         if (containers[0]) {
             containers[0].innerHTML = '';
-            routesData.slice(0, 3).forEach(route => {
+            const popularRoutes = [...routesData].sort((a, b) => b.rating - a.rating).slice(0, 3);
+            popularRoutes.forEach(route => {
                 const card = document.createElement('div');
                 card.className = 'route-card';
                 card.innerHTML = `
                     <img src="${route.image}" alt="${route.name}">
                     <div class="content">
                         <h3>${route.name}</h3>
+                        <p>Регион: ${route.region}</p>
                         <p class="route-name">${route.type}</p>
                         <p>Сложность: ${route.difficulty}</p>
                         <p>Длина: ${route.distance} км</p>
@@ -40,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.dataset.description = route.description;
                 card.dataset.url = route.link;
                 card.dataset.rating = route.rating;
+                card.dataset.region = route.region;
                 containers[0].appendChild(card);
             });
         }
@@ -48,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             containers[1].innerHTML = '';
             routesData.forEach(route => {
                 const selectedDifficulty = difficultyFilter ? difficultyFilter.value : 'any';
+                const selectedRegion = regionFilter ? regionFilter.value : 'any';
                 const activeTypeTag = document.querySelector('.filter-tag.active');
                 const selectedType = activeTypeTag ? activeTypeTag.dataset.typeTag : 'all';
                 const searchValue = searchInput ? searchInput.value.toLowerCase() : '';
@@ -56,19 +73,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     (selectedDifficulty === 'easy' && route.difficulty === 'Легкая') ||
                     (selectedDifficulty === 'medium' && route.difficulty === 'Средняя') ||
                     (selectedDifficulty === 'hard' && route.difficulty === 'Сложная');
+                const regionMatch = selectedRegion === 'any' || route.region === selectedRegion;
                 const typeMatch = selectedType === 'all' ||
                     (selectedType === 'mountain' && route.type.includes('Горный')) ||
                     (selectedType === 'forest' && route.type.includes('Лесной')) ||
                     (selectedType === 'city' && route.type.includes('Городской'));
-                const searchMatch = !searchValue || route.name.toLowerCase().includes(searchValue);
+                const searchMatch = !searchValue || 
+                                    route.name.toLowerCase().includes(searchValue) ||
+                                    route.region.toLowerCase().includes(searchValue);
 
-                if (difficultyMatch && typeMatch && searchMatch) {
+                if (difficultyMatch && typeMatch && searchMatch && regionMatch) {
                     const card = document.createElement('div');
                     card.className = 'route-card';
                     card.innerHTML = `
                         <img src="${route.image}" alt="${route.name}">
                         <div class="content">
                             <h3>${route.name}</h3>
+                            <p>Регион: ${route.region}</p>
                             <p class="route-name">${route.type}</p>
                             <p>Сложность: ${route.difficulty}</p>
                             <p>Длина: ${route.distance} км</p>
@@ -81,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.dataset.description = route.description;
                     card.dataset.url = route.link;
                     card.dataset.rating = route.rating;
+                    card.dataset.region = route.region;
                     containers[1].appendChild(card);
                 }
             });
@@ -90,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Обработчики фильтров
     if (difficultyFilter) difficultyFilter.addEventListener('change', renderRoutes);
+    if (regionFilter) regionFilter.addEventListener('change', renderRoutes);
     if (searchInput) searchInput.addEventListener('input', renderRoutes);
     typeTags.forEach(tag => {
         tag.addEventListener('click', () => {

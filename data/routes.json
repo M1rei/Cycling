@@ -8,6 +8,7 @@
     "distance": 276,
     "elevation": 280,
     "rating": 2,
+    "region": "Башкирия",
     "description": "Увлекательный маршрут по местам, связанным с жизнью и творчеством С.Т. Аксакова. Живописные лесные тропы, исторические места и потрясающие виды.",
     "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-ufa-abdulino-1/"
   },
@@ -20,6 +21,7 @@
     "distance": 297,
     "elevation": 850,
     "rating": 2,
+    "region": "Урал",
     "description": "Захватывающий маршрут по историческим местам горнозаводского Урала. Сочетание горных подъемов, живописных спусков и уникальных индустриальных пейзажей.",
     "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-ufa-berdjaush-2/"
   },
@@ -32,6 +34,7 @@
     "distance": 33,
     "elevation": 120,
     "rating": 1,
+    "region": "Самара",
     "description": "Городской маршрут по самым интересным местам Самары. Идеально подходит для знакомства с городом, включает посещение набережной, исторического центра и современных районов.",
     "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-samara-po-gorodu-18/"
   },
@@ -44,6 +47,7 @@
     "distance": 306,
     "elevation": 200,
     "rating": 1,
+    "region": "Поволжье",
     "description": "Живописный маршрут вдоль реки Белой, проходящий через красивейшие леса и природные достопримечательности. Отличный выбор для любителей природы.",
     "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-kambarka-kandry-5/"
   },
@@ -56,6 +60,7 @@
     "distance": 380,
     "elevation": 1100,
     "rating": 2,
+    "region": "Южный Урал",
     "description": "Захватывающий маршрут по самым красивым местам Южного Урала. Сложные подъемы, красивые перевалы и потрясающие горные пейзажи.",
     "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-meleuz-magnitogorsk-9/"
   },
@@ -68,6 +73,7 @@
     "distance": 200,
     "elevation": 250,
     "rating": 2,
+    "region": "Псковская область",
     "description": "Исторический маршрут от Пушкинских Гор до Пскова. Сочетание культурного наследия и природных красот, проходит через старинные усадьбы и монастыри.",
     "link": "https://www.onetwotrip.com/ru/blog/guides/russian-federation/samye-krasivye-velomarshruty-rossii/"
   },
@@ -80,6 +86,7 @@
     "distance": 350,
     "elevation": 400,
     "rating": 2,
+    "region": "Карелия",
     "description": "Живописный маршрут вдоль западного берега Ладожского озера. Сочетание карельской природы, исторических мест и потрясающих видов на озеро.",
     "link": "https://www.onetwotrip.com/ru/blog/guides/russian-federation/samye-krasivye-velomarshruty-rossii/"
   },
@@ -92,6 +99,7 @@
     "distance": 460,
     "elevation": 1500,
     "rating": 3,
+    "region": "Алтай",
     "description": "Легендарный маршрут по Чуйскому тракту в Республике Алтай. Один из красивейших маршрутов России с потрясающими горными пейзажами и историческими достопримечательностями.",
     "link": "https://www.onetwotrip.com/ru/blog/guides/russian-federation/samye-krasivye-velomarshruty-rossii/"
   },
@@ -104,6 +112,7 @@
     "distance": 60,
     "elevation": 900,
     "rating": 3,
+    "region": "Кавказ",
     "description": "Знаменитый маршрут 'Всесоюзная тридцатка' от гор к морю. Сочетание горных перевалов, морских пейзажей и субтропической природы.",
     "link": "https://www.onetwotrip.com/ru/blog/guides/russian-federation/samye-krasivye-velomarshruty-rossii/"
   },
@@ -116,6 +125,7 @@
     "distance": 400,
     "elevation": 150,
     "rating": 2,
+    "region": "Золотое кольцо",
     "description": "Культурно-исторический маршрут по городам Золотого кольца России. Проходит через древние города с богатой историей, храмами и музеями.",
     "link": "https://www.onetwotrip.com/ru/blog/guides/russian-federation/samye-krasivye-velomarshruty-rossii/"
   }
