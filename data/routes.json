@@ -21,7 +21,7 @@
     "distance": 297,
     "elevation": 850,
     "rating": 2,
-    "region": "Урал",
+    "region": "Уфа",
     "description": "Захватывающий маршрут по историческим местам горнозаводского Урала. Сочетание горных подъемов, живописных спусков и уникальных индустриальных пейзажей.",
     "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-ufa-berdjaush-2/"
   },
@@ -40,14 +40,14 @@
   },
   {
     "id": 4,
-    "name": "Устье реки Белой",
+    "name": "Камбарка — Кандры",
     "image": "img/forest2.jpg",
     "type": "Лесной маршрут",
     "difficulty": "Легкая",
     "distance": 306,
     "elevation": 200,
     "rating": 1,
-    "region": "Поволжье",
+    "region": "Камбарка",
     "description": "Живописный маршрут вдоль реки Белой, проходящий через красивейшие леса и природные достопримечательности. Отличный выбор для любителей природы.",
     "link": "https://velorussia.club/velomarshruty-po-rossii/velomarshrut-kambarka-kandry-5/"
   },
