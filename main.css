@@ -2108,3 +2108,115 @@ html {
     }
 }
 
+@media (max-width: 700px) {
+  .route-modal,
+  .athlete-modal {
+    width: 96vw !important;
+    max-width: 400px;
+    left: 2vw !important;
+    right: 2vw !important;
+    padding: 0 !important;
+    border-radius: 14px !important;
+  }
+  .modal-content,
+  .athlete-modal .modal-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 96vw !important;
+    max-width: 96vw !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    padding: 10px 6px 16px 6px !important;
+  }
+  .athlete-info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .modal-content img {
+    width: 100% !important;
+    max-width: 320px;
+    height: auto !important;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 14px 14px 0 0;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .modal-content > div,
+  .modal-content > section,
+  .modal-content > .athlete-info,
+  .modal-content > .athlete-details {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .modal-content h1,
+  .modal-content h2,
+  .modal-content h3,
+  .modal-content p,
+  .modal-content span {
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: center !important;
+  }
+  .modal-content .athlete-name,
+  .modal-content .modal-title {
+    font-size: 1.1rem !important;
+    line-height: 1.2 !important;
+    padding: 0 8px !important;
+    margin: 10px 0 8px 0 !important;
+  }
+  .modal-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .modal-athlete-image {
+    width: 100% !important;
+    max-width: 320px;
+    height: auto !important;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 14px 14px 0 0;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .modal-athlete-main-info {
+    width: 100% !important;
+    text-align: center !important;
+    margin-bottom: 10px;
+  }
+  .modal-athlete-name,
+  .modal-athlete-country,
+  .modal-athlete-discipline,
+  .modal-athlete-achievements {
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: center !important;
+    margin-bottom: 6px;
+  }
+  .modal-athlete-bio {
+    padding: 0 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .route-stats .stat,
+  .route-stats .distance,
+  .route-stats .elevation {
+    font-size: 0.98rem;
+    white-space: nowrap;
+    min-width: 0;
+    word-break: normal;
+  }
+}
+
