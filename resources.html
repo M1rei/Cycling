@@ -87,6 +87,45 @@
     <section class="gear-section">
         <h2 class="section-title">Экипировка</h2>
         
+        <!-- КНОПКА ОТКРЫТИЯ ФИЛЬТРА -->
+        <button id="toggle-gear-filter" class="gear-filter-toggle">Фильтр</button>
+        <!-- ВЫЕЗЖАЮЩИЙ ФИЛЬТР -->
+        <div id="gear-filter-panel" class="gear-filter-panel">
+          <form id="gear-filter-form" autocomplete="off">
+            <div class="gear-filter-row">
+              <input type="text" id="gear-search" class="gear-filter-search" placeholder="Поиск по названию...">
+              <button type="button" id="gear-search-btn" class="gear-filter-search-btn"><i class="fa fa-search"></i> Найти</button>
+              <div class="gear-filter-types">
+                <span>Тип велоспорта:</span>
+                <button type="button" class="gear-filter-type" data-type="Шоссе"><i class="fa fa-road"></i> Шоссе</button>
+                <button type="button" class="gear-filter-type" data-type="Горный"><i class="fa fa-mountain"></i> Горный</button>
+                <button type="button" class="gear-filter-type" data-type="BMX"><i class="fa fa-bicycle"></i> BMX</button>
+                <button type="button" class="gear-filter-type" data-type="Городской"><i class="fa fa-city"></i> Городской</button>
+              </div>
+              <div class="gear-filter-categories">
+                <span>Питание:</span>
+                <button type="button" class="gear-filter-category" data-category="Батончик">Батончик</button>
+                <button type="button" class="gear-filter-category" data-category="Гель">Гель</button>
+                <button type="button" class="gear-filter-category" data-category="Фляга">Фляга</button>
+              </div>
+              <div class="gear-filter-categories">
+                <span>Снаряжение:</span>
+                <button type="button" class="gear-filter-category" data-category="Одежда">Одежда</button>
+                <button type="button" class="gear-filter-category" data-category="Аксессуар">Аксессуары</button>
+              </div>
+              <div class="gear-filter-categories">
+                <span>Детские вещи:</span>
+                <button type="button" class="gear-filter-category" data-category="Детский">Детские товары</button>
+              </div>
+              <div class="gear-filter-categories">
+                <span>Запчасти:</span>
+                <button type="button" class="gear-filter-category" data-category="Запчасти">Запчасти</button>
+              </div>
+              <button type="reset" class="gear-filter-reset">Сбросить</button>
+            </div>
+          </form>
+        </div>
+
         <!-- Шлемы -->
         <div class="gear-category">
             <h3 class="category-title">Шлемы</h3>
@@ -94,7 +133,7 @@
                 <div class="gear-card">
                     <img src="img/RoadHelmet.jpg" alt="Шоссейный шлем">
                     <h3>Шоссейный шлем</h3>
-                    <p>Легкий и надежный</p>
+                    <p>Шоссе, городской. Легкий и надежный</p>
                     <p>Отличная вентиляция</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -102,7 +141,7 @@
                 <div class="gear-card">
                     <img src="img/MountainHelmet.jpg" alt="Горный шлем">
                     <h3>Горный шлем</h3>
-                    <p>Усиленный козырёк от веток</p>
+                    <p>Горный. Усиленный козырёк от веток</p>
                     <p>Совместим с маской и очками</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -110,7 +149,7 @@
                 <div class="gear-card">
                     <img src="img/BMXHelmet.jpg" alt="BMX шлем">
                     <h3>BMX шлем</h3>
-                    <p>Система быстрого снятия ремня</p>
+                    <p>BMX, городской. Система быстрого снятия ремня</p>
                     <p>Многослойная ударопоглощающая структура</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -118,7 +157,7 @@
                 <div class="gear-card">
                     <img src="img/triatlon.jpg" alt="Шлем для триатлона">
                     <h3>Шлем для триатлона</h3>
-                    <p>Аэродинамический дизайн</p>
+                    <p>Шоссе. Аэродинамический дизайн</p>
                     <p>Встроенный визор для защиты глаз</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -126,7 +165,7 @@
                 <div class="gear-card">
                     <img src="img/kid.jpg" alt="Детский велосипедный шлем">
                     <h3>Детский велосипедный шлем</h3>
-                    <p>Повышенная защита затылочной части</p>
+                    <p>Детский. Повышенная защита затылочной части</p>
                     <p>Яркие расцветки для лучшей видимости</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -140,7 +179,7 @@
                 <div class="gear-card">
                     <img src="img/TrailTire.jpg" alt="Покрышка для трейла">
                     <h3>Покрышка для трейла</h3>
-                    <p>Отличное сцепление на тропах</p>
+                    <p>Горный. Отличное сцепление на тропах</p>
                     <p>Высокая устойчивость к проколам</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -148,7 +187,7 @@
                 <div class="gear-card">
                     <img src="img/EnduroTire.jpg" alt="Покрышка для эндуро">
                     <h3>Покрышка для эндуро</h3>
-                    <p>Усиленные боковины для агрессивных спусков</p>
+                    <p>Горный. Усиленные боковины для агрессивных спусков</p>
                     <p>Самоочищающиеся шашки протектора</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -156,7 +195,7 @@
                 <div class="gear-card">
                     <img src="img/DownhillTire.png" alt="Покрышка для даунхилла">
                     <h3>Покрышка для даунхилла</h3>
-                    <p>Максимальная прочность на больших скоростях</p>
+                    <p>Горный. Максимальная прочность на больших скоростях</p>
                     <p>Глубокий рисунок для стабильности на рыхлом грунте</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -164,7 +203,7 @@
                 <div class="gear-card">
                     <img src="img/graviy.png" alt="Покрышка для гравия">
                     <h3>Покрышка для гравия</h3>
-                    <p>Универсальный протектор для разных типов покрытия</p>
+                    <p>Шоссе, горный, BMX, городской. Универсальный протектор для разных типов покрытия</p>
                     <p>Хорошая износостойкость</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -172,7 +211,7 @@
                 <div class="gear-card">
                     <img src="img/sliki.png" alt="Покрышка для слики">
                     <h3>Покрышка для слики</h3>
-                    <p>Идеальна для асфальта</p>
+                    <p>Шоссе, городской. Идеальна для асфальта</p>
                     <p>Минимальное сопротивление качению</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -186,7 +225,7 @@
                 <div class="gear-card">
                     <img src="img/CyclingShoes.jpg" alt="Велообувь">
                     <h3>Велообувь</h3>
-                    <p>Идеальная передача усилия</p>
+                    <p>Шоссе, городской, одежда. Идеальная передача усилия</p>
                     <p>Комфортная посадка</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -194,7 +233,7 @@
                 <div class="gear-card">
                     <img src="img/CyclingJacket.jpg" alt="Велокуртка">
                     <h3>Велокуртка</h3>
-                    <p>Идеальна для холодной погоды</p>
+                    <p>Шоссе, одежда. Идеальна для холодной погоды</p>
                     <p>Дышащий материал</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -202,7 +241,7 @@
                 <div class="gear-card">
                     <img src="img/glasses.jpg" alt="Солнцезащитные очки">
                     <h3>Солнцезащитные очки</h3>
-                    <p>Необходимы для защиты глаз</p>
+                    <p>Шоссе, одежда. Необходимы для защиты глаз</p>
                     <p>Легкие и удобные</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -210,7 +249,7 @@
                 <div class="gear-card">
                     <img src="img/glowes.png" alt="Велоперчатки">
                     <h3>Велоперчатки</h3>
-                    <p>Улучшенное сцепление с рулём</p>
+                    <p>Шоссе, горный, BMX, городской, одежда. Улучшенное сцепление с рулём</p>
                     <p>Амортизация ударов и защита рук</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -218,7 +257,7 @@
                 <div class="gear-card">
                     <img src="img/shtan.png" alt="Велоштаны">
                     <h3>Велоштаны</h3>
-                    <p>Эргономичный крой для свободы движений</p>
+                    <p>Шоссе, одежда. Эргономичный крой для свободы движений</p>
                     <p>Вставки из плотного материала в зонах контакта</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -232,7 +271,7 @@
                 <div class="gear-card">
                     <img src="img/BikeCompucter.jpg" alt="Велокомпьютер">
                     <h3>Велокомпьютер</h3>
-                    <p>Точное отслеживание поездки</p>
+                    <p>Городской, аксессуар. Точное отслеживание поездки</p>
                     <p>Легко читаемый дисплей</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -240,7 +279,7 @@
                 <div class="gear-card">
                     <img src="img/BikeMultitool.jpg" alt="Мультитул для велосипеда">
                     <h3>Мультитул для велосипеда</h3>
-                    <p>Необходим для ремонта</p>
+                    <p>Горный, аксессуар. Необходим для ремонта</p>
                     <p>Прочный и компактный</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -248,7 +287,7 @@
                 <div class="gear-card">
                     <img src="img/sedlo.jpg" alt="Велосипедное седло">
                     <h3>Велосипедное седло</h3>
-                    <p>Удобное и комфортное</p>
+                    <p>Аксессуар. Удобное и комфортное</p>
                     <p>Прочное и надежное</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -256,7 +295,7 @@
                 <div class="gear-card">
                     <img src="img/lamp.png" alt="Фонарь для велосипеда">
                     <h3>Фонарь для велосипеда</h3>
-                    <p>Яркий свет для ночных поездок</p>
+                    <p>Шоссе, горный, аксессуар. Яркий свет для ночных поездок</p>
                     <p>Несколько режимов освещения</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -264,7 +303,7 @@
                 <div class="gear-card">
                     <img src="img/step.png" alt="Подножка">
                     <h3>Подножка</h3>
-                    <p>Удобная установка велосипеда в любом месте</p>
+                    <p>Аксессуар. Удобная установка велосипеда в любом месте</p>
                     <p>Регулируемая по длине</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -272,7 +311,7 @@
                 <div class="gear-card">
                     <img src="img/nasos.png" alt="Насос с манометром">
                     <h3>Насос с манометром</h3>
-                    <p>Быстрая накачка колес</p>
+                    <p>Аксессуар. Быстрая накачка колес</p>
                     <p>Контроль давления в шинах</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -286,7 +325,7 @@
                 <div class="gear-card">
                     <img src="img/bottle.png" alt="Фляга">
                     <h3>Фляга</h3>
-                    <p>Удобная для питья на ходу</p>
+                    <p>Шоссе, городской. Удобная для питья на ходу</p>
                     <p>Безопасные материалы</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -300,14 +339,14 @@
                 <div class="gear-card">
                     <img src="img/energy.png" alt="Энергетический батончик">
                     <h3>Энергетический батончик</h3>
-                    <p>Быстрый источник энергии</p>
+                    <p>Батончик. Быстрый источник энергии</p>
                     <p>Удобно брать с собой</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
                 <div class="gear-card">
                     <img src="img/energygel.png" alt="Энергетический гель">
                     <h3>Энергетический гель</h3>
-                    <p>Мгновенное восполнение сил</p>
+                    <p>Гель. Мгновенное восполнение сил</p>
                     <p>Легко усваивается</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -321,7 +360,7 @@
                 <div class="gear-card">
                     <img src="img/sumka.png" alt="Велосумка">
                     <h3>Велосумка</h3>
-                    <p>Для инструментов и мелочей</p>
+                    <p>Горный. Для инструментов и мелочей</p>
                     <p>Крепится на раму или под седло</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -356,35 +395,35 @@
                 <div class="gear-card">
                     <img src="img/cep.png" alt="Цепь">
                     <h3>Цепь</h3>
-                    <p>Высокая износостойкость</p>
+                    <p>Запчасти. Высокая износостойкость</p>
                     <p>Подходит для разных типов велосипедов</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
                 <div class="gear-card">
                     <img src="img/star.png" alt="Звёзды">
                     <h3>Звёзды</h3>
-                    <p>Различные размеры</p>
+                    <p>Запчасти. Различные размеры</p>
                     <p>Прочные материалы</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
                 <div class="gear-card">
                     <img src="img/kolodki.png" alt="Тормозные колодки">
                     <h3>Тормозные колодки</h3>
-                    <p>Надёжное торможение</p>
+                    <p>Запчасти. Надёжное торможение</p>
                     <p>Долгий срок службы</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
                 <div class="gear-card">
                     <img src="img/trosiki.png" alt="Тросики">
                     <h3>Тросики</h3>
-                    <p>Для тормозов и переключателей</p>
+                    <p>Запчасти. Для тормозов и переключателей</p>
                     <p>Гибкие и прочные</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
                 <div class="gear-card">
                     <img src="img/pedal.png" alt="Педали">
                     <h3>Педали</h3>
-                    <p>Различные типы: платформы, контактные</p>
+                    <p>Запчасти. Различные типы: платформы, контактные</p>
                     <p>Прочные и лёгкие</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -433,21 +472,21 @@
                 <div class="gear-card">
                     <img src="img/velokreslo2.png" alt="Велокресло">
                     <h3>Велокресло</h3>
-                    <p>Безопасная перевозка ребёнка</p>
+                    <p>Детский. Безопасная перевозка ребёнка</p>
                     <p>Мягкая подкладка</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
                 <div class="gear-card">
                     <img src="img/kidhelmet.png" alt="Детский шлем">
                     <h3>Детский шлем</h3>
-                    <p>Лёгкий и прочный</p>
+                    <p>Детский. Лёгкий и прочный</p>
                     <p>Яркий дизайн</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
                 <div class="gear-card">
                     <img src="img/komplekt.png" alt="Защитный комплект">
                     <h3>Защитный комплект</h3>
-                    <p>Наколенники, налокотники, перчатки</p>
+                    <p>Детский. Наколенники, налокотники, перчатки</p>
                     <p>Регулируемые размеры</p>
                     <a href="#" class="read-review">Читать описание</a>
                 </div>
@@ -456,6 +495,7 @@
     </section>
     <script src="js/resources.js"></script>
     <script src="js/gear.js"></script>
+    <script src="js/gear-filter.js"></script>
     <script src="js/burger.js"></script>
 
     <!-- Footer -->
