@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const athletesGrid = document.querySelector('.athletes-grid');
     const disciplineSelect = document.getElementById('discipline-select');
     const countrySelect = document.getElementById('country-select');
+    const searchInput = document.getElementById('athlete-search');
     let athletesData = [];
 
     // Загрузка данных из JSON
@@ -15,12 +16,15 @@ document.addEventListener('DOMContentLoaded', async function() {
     function renderAthletes() {
         const selectedDiscipline = disciplineSelect.value;
         const selectedCountry = countrySelect.value;
+        const searchValue = searchInput ? searchInput.value.toLowerCase() : '';
 
         athletesGrid.innerHTML = '';
         athletesData.forEach(athlete => {
             const disciplineMatch = selectedDiscipline === 'all' || athlete.discipline === selectedDiscipline;
             const countryMatch = selectedCountry === 'all' || athlete.country === selectedCountry;
-            if (disciplineMatch && countryMatch) {
+            const searchMatch = !searchValue || athlete.name.toLowerCase().includes(searchValue);
+            
+            if (disciplineMatch && countryMatch && searchMatch) {
                 const card = document.createElement('div');
                 card.className = 'athlete-card';
                 card.innerHTML = `
@@ -43,6 +47,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Фильтрация
     disciplineSelect.addEventListener('change', renderAthletes);
     countrySelect.addEventListener('change', renderAthletes);
+    if (searchInput) searchInput.addEventListener('input', renderAthletes);
 
     // Модальное окно
     function attachModalHandlers() {
