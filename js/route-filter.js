@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.filter-search');
     const difficultyFilter = document.getElementById('difficulty-filter');
-    const regionFilter = document.getElementById('region-filter');
+    const cityFilter = document.getElementById('city-filter');
     const typeTags = document.querySelectorAll('.filter-tag');
     const containers = document.querySelectorAll('.routes-container');
     const modal = document.getElementById('routeModal');
@@ -14,18 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchRoutes() {
         const response = await fetch('data/routes.json');
         routesData = await response.json();
-        populateRegionFilter();
+        populateCityFilter();
         renderRoutes();
     }
 
-    function populateRegionFilter() {
-        const regions = [...new Set(routesData.map(route => route.region))];
-        regions.sort();
-        regions.forEach(region => {
+    function populateCityFilter() {
+        const cities = [...new Set(routesData.map(route => route.city))];
+        cities.sort();
+        cities.forEach(city => {
             const option = document.createElement('option');
-            option.value = region;
-            option.textContent = region;
-            regionFilter.appendChild(option);
+            option.value = city;
+            option.textContent = city;
+            cityFilter.appendChild(option);
         });
     }
 
@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="route-name">${route.type}</p>
                         <p>Сложность: ${route.difficulty}</p>
                         <p>Длина: ${route.distance} км</p>
+                        <p>Город: ${route.city}</p>
                     </div>
                     <a href="#" class="read-more">Подробнее</a>
                 `;
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.dataset.description = route.description;
                 card.dataset.url = route.link;
                 card.dataset.rating = route.rating;
-                card.dataset.region = route.region;
+                card.dataset.city = route.city;
                 containers[0].appendChild(card);
             });
         }
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             containers[1].innerHTML = '';
             routesData.forEach(route => {
                 const selectedDifficulty = difficultyFilter ? difficultyFilter.value : 'any';
-                const selectedRegion = regionFilter ? regionFilter.value : 'any';
+                const selectedCity = cityFilter ? cityFilter.value : 'any';
                 const activeTypeTag = document.querySelector('.filter-tag.active');
                 const selectedType = activeTypeTag ? activeTypeTag.dataset.typeTag : 'all';
                 const searchValue = searchInput ? searchInput.value.toLowerCase() : '';
@@ -73,16 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     (selectedDifficulty === 'easy' && route.difficulty === 'Легкая') ||
                     (selectedDifficulty === 'medium' && route.difficulty === 'Средняя') ||
                     (selectedDifficulty === 'hard' && route.difficulty === 'Сложная');
-                const regionMatch = selectedRegion === 'any' || route.region === selectedRegion;
+                const cityMatch = selectedCity === 'any' || route.city === selectedCity;
                 const typeMatch = selectedType === 'all' ||
                     (selectedType === 'mountain' && route.type.includes('Горный')) ||
                     (selectedType === 'forest' && route.type.includes('Лесной')) ||
                     (selectedType === 'city' && route.type.includes('Городской'));
                 const searchMatch = !searchValue || 
                                     route.name.toLowerCase().includes(searchValue) ||
-                                    route.region.toLowerCase().includes(searchValue);
+                                    route.city.toLowerCase().includes(searchValue);
 
-                if (difficultyMatch && typeMatch && searchMatch && regionMatch) {
+                if (difficultyMatch && typeMatch && searchMatch && cityMatch) {
                     const card = document.createElement('div');
                     card.className = 'route-card';
                     card.innerHTML = `
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p class="route-name">${route.type}</p>
                             <p>Сложность: ${route.difficulty}</p>
                             <p>Длина: ${route.distance} км</p>
+                            <p>Город: ${route.city}</p>
                         </div>
                         <a href="#" class="read-more">Подробнее</a>
                     `;
@@ -102,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.dataset.description = route.description;
                     card.dataset.url = route.link;
                     card.dataset.rating = route.rating;
-                    card.dataset.region = route.region;
+                    card.dataset.city = route.city;
                     containers[1].appendChild(card);
                 }
             });
@@ -112,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Обработчики фильтров
     if (difficultyFilter) difficultyFilter.addEventListener('change', renderRoutes);
-    if (regionFilter) regionFilter.addEventListener('change', renderRoutes);
+    if (cityFilter) cityFilter.addEventListener('change', renderRoutes);
     if (searchInput) searchInput.addEventListener('input', renderRoutes);
     typeTags.forEach(tag => {
         tag.addEventListener('click', () => {
@@ -137,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalTitle = modal.querySelector('.modal-title');
         const distance = modal.querySelector('.distance');
         const elevation = modal.querySelector('.elevation');
+        const city = modal.querySelector('.city');
         const description = modal.querySelector('.route-description');
         const difficultyStars = modal.querySelector('.difficulty-stars');
         const rating = parseInt(card.dataset.rating || '1');
@@ -144,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = card.querySelector('h3').textContent;
         distance.textContent = card.dataset.distance + ' км';
         elevation.textContent = card.dataset.elevation + ' м';
+        city.textContent = card.dataset.city;
         description.textContent = card.dataset.description;
         currentRouteUrl = card.dataset.url;
 
