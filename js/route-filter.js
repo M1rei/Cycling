@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${route.image}" alt="${route.name}">
                     <div class="content">
                         <h3>${route.name}</h3>
-                        <p>Регион: ${route.region}</p>
                         <p class="route-name">${route.type}</p>
                         <p>Сложность: ${route.difficulty}</p>
                         <p>Длина: ${route.distance} км</p>
@@ -51,7 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 card.dataset.distance = route.distance;
                 card.dataset.elevation = route.elevation;
-                card.dataset.difficulty = route.difficulty;
+                card.dataset.difficulty = route.difficulty.toLowerCase().replace('сложная', 'hard').replace('средняя', 'medium').replace('легкая', 'easy');
+                card.dataset.type = route.type.toLowerCase().replace('горный маршрут', 'mountain').replace('лесной маршрут', 'forest').replace('городской маршрут', 'city');
                 card.dataset.description = route.description;
                 card.dataset.url = route.link;
                 card.dataset.rating = route.rating;
@@ -89,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${route.image}" alt="${route.name}">
                         <div class="content">
                             <h3>${route.name}</h3>
-                            <p>Регион: ${route.region}</p>
                             <p class="route-name">${route.type}</p>
                             <p>Сложность: ${route.difficulty}</p>
                             <p>Длина: ${route.distance} км</p>
@@ -98,7 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                     card.dataset.distance = route.distance;
                     card.dataset.elevation = route.elevation;
-                    card.dataset.difficulty = route.difficulty;
+                    card.dataset.difficulty = route.difficulty.toLowerCase().replace('сложная', 'hard').replace('средняя', 'medium').replace('легкая', 'easy');
+                    card.dataset.type = route.type.toLowerCase().replace('горный маршрут', 'mountain').replace('лесной маршрут', 'forest').replace('городской маршрут', 'city');
                     card.dataset.description = route.description;
                     card.dataset.url = route.link;
                     card.dataset.rating = route.rating;
