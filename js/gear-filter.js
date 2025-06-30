@@ -6,12 +6,53 @@ toggleBtn.addEventListener('click', () => {
   filterPanel.classList.toggle('active');
 });
 
+// Определяем соответствие кнопок фильтра и элементов экипировки
+const filterMapping = {
+  'Шоссе': [
+    'shosseyny-shlem', 'shlem-trialon', 'pokryshka-sliky', 'pokryshka-graviy',
+    'veloobuv', 'velokurtka', 'solntsezashitnye-ochki', 'veloperchatki',
+    'veloshtany', 'fonar', 'flyaga'
+  ],
+  'Горный': [
+    'gorny-shlem', 'pokryshka-treil', 'pokryshka-enduro', 'pokryshka-daunhill',
+    'pokryshka-graviy', 'veloperchatki', 'multitul', 'fonar', 'velosumka'
+  ],
+  'BMX': [
+    'bmx-shlem', 'pokryshka-graviy', 'veloperchatki'
+  ],
+  'Городской': [
+    'shosseyny-shlem', 'bmx-shlem', 'pokryshka-graviy', 'pokryshka-sliky',
+    'veloobuv', 'veloperchatki', 'velokompyuter', 'flyaga'
+  ],
+  'Одежда': [
+    'veloobuv', 'velokurtka', 'solntsezashitnye-ochki', 'veloperchatki', 'veloshtany'
+  ],
+  'Аксессуар': [
+    'velokompyuter', 'multitul', 'fonar', 'podnozhka', 'nasos', 'velosedlo'
+  ],
+  'Детский': [
+    'detsky-shlem', 'velokreslo', 'detsky-shlem-2', 'zashitny-komplekt'
+  ],
+  'Запчасти': [
+    'tsep', 'zvezdy', 'tormoznye-kolodki', 'trosiki', 'pedali'
+  ],
+  'Батончик': [
+    'energetichesky-batonchik'
+  ],
+  'Гель': [
+    'energetichesky-gel'
+  ],
+  'Фляга': [
+    'flyaga'
+  ]
+};
+
 // Активные кнопки фильтра
 const typeBtns = document.querySelectorAll('.gear-filter-type');
 typeBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     btn.classList.toggle('active');
-    filterGear(); // Фильтрация по типу срабатывает сразу
+    filterGear();
   });
 });
 
@@ -29,14 +70,10 @@ resetBtn.addEventListener('click', () => {
   typeBtns.forEach(btn => btn.classList.remove('active'));
   categoryBtns.forEach(btn => btn.classList.remove('active'));
   document.getElementById('gear-search').value = '';
-  // Показываем все карточки экипировки
-  const cards = document.querySelectorAll('.gear-card');
-  cards.forEach(card => {
-    card.style.display = '';
-  });
+  showAllGear();
 });
 
-// Поиск по названию экипировки только по кнопке или Enter
+// Поиск по названию экипировки
 const searchBtn = document.getElementById('gear-search-btn');
 const searchInput = document.getElementById('gear-search');
 searchBtn.addEventListener('click', filterGear);
@@ -47,35 +84,64 @@ searchInput.addEventListener('keydown', function(e) {
   }
 });
 
-// Фильтрация по типу велоспорта и поиску
-function filterGear() {
-  const query = searchInput.value.trim().toLowerCase();
-  const activeTypes = Array.from(typeBtns).filter(btn => btn.classList.contains('active')).map(btn => btn.dataset.type.toLowerCase());
-  const activeCategories = Array.from(categoryBtns).filter(btn => btn.classList.contains('active')).map(btn => btn.dataset.category.toLowerCase());
+// Показать все элементы экипировки
+function showAllGear() {
   const cards = document.querySelectorAll('.gear-card');
   cards.forEach(card => {
+    card.style.display = '';
+  });
+}
+
+// Основная функция фильтрации
+function filterGear() {
+  const query = searchInput.value.trim().toLowerCase();
+  const activeTypes = Array.from(typeBtns).filter(btn => btn.classList.contains('active')).map(btn => btn.dataset.type);
+  const activeCategories = Array.from(categoryBtns).filter(btn => btn.classList.contains('active')).map(btn => btn.dataset.category);
+  
+  // Если нет активных фильтров и нет поиска, показываем все
+  if (activeTypes.length === 0 && activeCategories.length === 0 && query === '') {
+    showAllGear();
+    return;
+  }
+
+  // Собираем все id элементов, которые должны быть показаны
+  const showIds = new Set();
+
+  // Добавляем элементы по типам
+  activeTypes.forEach(type => {
+    if (filterMapping[type]) {
+      filterMapping[type].forEach(id => showIds.add(id));
+    }
+  });
+
+  // Добавляем элементы по категориям
+  activeCategories.forEach(category => {
+    if (filterMapping[category]) {
+      filterMapping[category].forEach(id => showIds.add(id));
+    }
+  });
+
+  // Фильтруем все карточки
+  const cards = document.querySelectorAll('.gear-card');
+  cards.forEach(card => {
+    const cardId = card.id;
     const title = card.querySelector('h3').textContent.toLowerCase();
-    const desc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
-    // Проверка типа
-    let typeMatch = true;
-    if (activeTypes.length > 0) {
-      typeMatch = activeTypes.some(type => title.includes(type) || desc.includes(type));
-    }
-    // Проверка категории
-    let categoryMatch = true;
-    if (activeCategories.length > 0) {
-      categoryMatch = activeCategories.some(cat => title.includes(cat) || desc.includes(cat));
-    }
-    // Проверка поиска
-    let searchMatch = true;
-    if (query.length > 0) {
-      searchMatch = title.includes(query);
-    }
-    if (typeMatch && categoryMatch && searchMatch) {
-      card.style.display = '';
+    
+    let shouldShow = false;
+
+    // Проверяем поиск
+    if (query !== '') {
+      shouldShow = title.includes(query);
     } else {
-      card.style.display = 'none';
+      shouldShow = true;
     }
+
+    // Если есть активные фильтры, проверяем соответствие
+    if (activeTypes.length > 0 || activeCategories.length > 0) {
+      shouldShow = shouldShow && showIds.has(cardId);
+    }
+
+    card.style.display = shouldShow ? '' : 'none';
   });
 }
 
