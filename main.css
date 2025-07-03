@@ -1282,6 +1282,7 @@ main {
     max-width: 1600px;
     margin: 0 auto;
     gap: 24px;
+    margin-bottom: 40px;
 }
 .feature-item {
     flex: 1 1 0;
@@ -2220,3 +2221,11 @@ html {
   }
 }
 
+.features-container {
+    margin-bottom: 40px;
+}
+
+#ww_476108b85af40 {
+    margin-top: 40px;
+
+}
