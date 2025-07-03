@@ -1,0 +1,97 @@
+#profile-modal {
+    width: 600px;
+    max-width: 98vw;
+    padding: 48px 40px 40px 40px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    background: #fff;
+    position: relative;
+    min-height: 700px;
+}
+.profile-avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+.profile-avatar-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #bdbdbd;
+    background: #f5f5f5;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.avatar-upload-label {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #e3e6fd;
+    color: #3a3a6a;
+    border-radius: 22px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 0;
+    transition: background 0.2s;
+    border: 1px solid #bfc6e0;
+}
+.avatar-upload-label:hover {
+    background: #d0d6f7;
+}
+.avatar-upload-input {
+    display: none;
+}
+.avatar-upload-btn {
+    margin-top: 8px;
+    padding: 7px 20px;
+    border-radius: 18px;
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.avatar-upload-btn:hover {
+    background: #554ee0;
+}
+.change-password-input {
+    height: 32px;
+    font-size: 15px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid #bfc6e0;
+    margin-bottom: 0;
+}
+.change-password-btn {
+    margin-top: 8px;
+    padding: 6px 16px;
+    border-radius: 12px;
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.change-password-btn:hover {
+    background: #554ee0;
+}
+.logout-btn {
+    margin-top: 22px;
+    padding: 7px 20px;
+    border-radius: 18px;
+    background: #e53935;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.logout-btn:hover {
+    background: #b71c1c;
+} 

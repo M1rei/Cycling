@@ -2229,3 +2229,172 @@ html {
     margin-top: 40px;
 
 }
+
+/* --- User Panel --- */
+.user-panel { visibility: hidden; }
+.user-panel.ready { visibility: visible; }
+.user-panel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+}
+.login-btn, .register-btn {
+    padding: 7px 18px;
+    border-radius: 6px;
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.register-btn {
+    background: #4f46e5;
+}
+.login-btn:hover, .register-btn:hover {
+    background: #2d2df1;
+    color: #fff;
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #f3f4fa;
+    transition: background 0.2s;
+}
+.user-profile:hover {
+    background: #e0e7ff;
+}
+.user-profile img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e0e0e0;
+}
+#profile-modal .modal-btn {
+    margin-top: 8px;
+}
+#profile-modal h2 {
+    margin-bottom: 10px;
+}
+#profile-modal input[type="password"] {
+    margin-bottom: 0;
+}
+#profile-modal .modal-error {
+    margin-bottom: 0;
+    min-height: 18px;
+}
+
+/* --- Modal Styles --- */
+.modal-auth-bg {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.45);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s;
+}
+.modal-auth-bg.active {
+    display: flex;
+}
+.modal-auth {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(99,102,241,0.18);
+    padding: 36px 32px 28px 32px;
+    min-width: 320px;
+    max-width: 95vw;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    animation: modalOpen 0.3s;
+}
+@keyframes modalOpen {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: none; }
+}
+.modal-auth h2 {
+    text-align: center;
+    color: #6366f1;
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+}
+.modal-auth form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.modal-auth input {
+    padding: 10px 14px;
+    border-radius: 7px;
+    border: 1.5px solid #e0e0e0;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+}
+.modal-auth input:focus {
+    border: 1.5px solid #6366f1;
+}
+.modal-auth .modal-btn {
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+.modal-auth .modal-btn:hover {
+    background: #4f46e5;
+}
+.modal-auth .modal-switch {
+    text-align: center;
+    margin-top: 10px;
+    color: #6366f1;
+    cursor: pointer;
+    font-size: 0.98rem;
+    text-decoration: underline;
+}
+.modal-auth .modal-error {
+    color: #e53935;
+    text-align: center;
+    font-size: 0.98rem;
+    margin-bottom: 6px;
+}
+.modal-auth .close-modal-auth {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #6366f1;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.modal-auth .close-modal-auth:hover {
+    color: #e53935;
+}
+@media (max-width: 500px) {
+    .modal-auth {
+        padding: 18px 6px 16px 6px;
+        min-width: 0;
+        width: 98vw;
+        max-width: 98vw;
+    }
+}

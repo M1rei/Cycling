@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="icon" href="logo/logocycl.png">
+    <link rel="stylesheet" href="profile-modal.css">
 </head>
 <body>
     <header class="header">
@@ -31,6 +32,10 @@
             <a href="athletes.html">Атлеты</a>
             <a href="articles.html">Статьи</a>
         </nav>
+        <div class="user-panel">
+            <a href="#" class="login-btn" id="open-login-modal"><i class="fa fa-sign-in-alt"></i> Войти</a>
+            <a href="#" class="register-btn" id="open-register-modal"><i class="fa fa-user-plus"></i> Регистрация</a>
+        </div>
     </header>
     <main>
         <div style="max-width: 1400px; margin: 0 auto; padding: 40px 0;">
@@ -87,6 +92,33 @@
             <a href="#" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
+    <!-- Модальные окна авторизации и регистрации -->
+    <div class="modal-auth-bg" id="modal-auth-bg">
+        <div class="modal-auth" id="modal-auth-login">
+            <button class="close-modal-auth" id="close-login-modal">&times;</button>
+            <h2>Вход</h2>
+            <form id="login-form">
+                <input type="text" name="username" placeholder="Логин" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <div class="modal-error" id="login-error"></div>
+                <button type="submit" class="modal-btn">Войти</button>
+            </form>
+            <div class="modal-switch" id="switch-to-register">Нет аккаунта? Зарегистрироваться</div>
+        </div>
+        <div class="modal-auth" id="modal-auth-register" style="display:none;">
+            <button class="close-modal-auth" id="close-register-modal">&times;</button>
+            <h2>Регистрация</h2>
+            <form id="register-form">
+                <input type="text" name="username" placeholder="Логин" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <div class="modal-error" id="register-error"></div>
+                <button type="submit" class="modal-btn">Зарегистрироваться</button>
+            </form>
+            <div class="modal-switch" id="switch-to-login">Уже есть аккаунт? Войти</div>
+        </div>
+    </div>
     <script src="js/burger.js"></script>
+    <script src="js/auth-modal.js"></script>
 </body>
 </html> 
